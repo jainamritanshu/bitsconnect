@@ -12,5 +12,8 @@ admin.site.register(Place)
 admin.site.register(Travel)
 admin.site.register(GlobalEvent)
 admin.site.register(MissedCall)
-
+admin.site.register(course)
+admin.site.register(notes)
+admin.site.register(handout)
+admin.site.register(books)
 
