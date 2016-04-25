@@ -159,6 +159,14 @@ class books(models.Model):
 	def __unicode__(self):
 		return self.title
 
+class misc_no(models.Model):
+	name = models.CharField(max_length=100)
+	desig = models.CharField(max_length=100)
+	num = models.IntegerField(default=0, db_index=True)		
+	created = models.DateTimeField(auto_now_add=True, db_index=True)
+
+	def __unicode__(self):
+		return self.name
 
 
 

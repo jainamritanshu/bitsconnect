@@ -206,6 +206,12 @@ $.ajaxSetup({
 
 
         <li ><a href="{% url 'logout' %}">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+
+         <li class="{% navactive request 'courses' %}"><a href="{% url 'courses' %}">Courses<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a></li>
+
+         <li class="{% navactive request 'misc_num' %}"><a href="{% url 'misc_num' %}">Miscellaneous Numbers<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a></li>
+
+         <li class="{% navactive request 'o_book' %}"><a href="{% url 'o_book' %}">Order Your Textbook<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a></li>
       </ul>
     </div>
   </div>
