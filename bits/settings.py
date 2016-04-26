@@ -47,7 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+
 
 )
 
@@ -70,6 +70,7 @@ TEMPLATES = [
 ]
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
 )
 
 

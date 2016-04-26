@@ -1,6 +1,5 @@
 {% extends 'connect/base.html'%}
 
-{% block scripts %}
 <script>
 $("#password-2, #password-1, #password ").on('keyup', function(){
     if ($('#password-1').val() == $("#password-2").val() && $('#password-1').val().length > 7 && $('#password').val().length >7){ //minChar:8
@@ -76,9 +75,6 @@ $("#password-2, #password-1, #password ").on('keyup', function(){
 
 </style>
 
-{% endblock %}
-
-{% block main %}
 <nav class="navbar navbar navbar-default">
   <div class="container-fluid">
   <div class="navbar-header">
@@ -156,4 +152,3 @@ $("#password-2, #password-1, #password ").on('keyup', function(){
 </div>
 <div id="push">
 </div>
-{%endblock main %}

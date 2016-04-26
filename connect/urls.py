@@ -29,8 +29,4 @@ url(r'^my-travel/$', views.my_travel,name='mytravel'),
 url(r'^del-travel/(?P<t_id>\d+)/$', views.del_travel,name='deltravel'),
 url(r'^ads/$', views.classifieds,name='ads'),
 url(r'^my-ads/$', views.my_classifieds,name='myads'),
-url(r'^course_help/notes/(?P<course>[A-Z]+).pdf$', views.notes, name='notes')
-url(r'^course_help/handout/(?P<course>[A-Z]+).pdf$', views.handout, name='handout'),
-url(r'^course_help/books/(?P<course>[A-Z]+).pdf$', views.books, name='books'),
-url(r'^course_help/(?P<course>[A-Z]+)/$', views.course,name='course'),
 ]

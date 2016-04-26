@@ -16,4 +16,4 @@ admin.site.register(course)
 admin.site.register(notes)
 admin.site.register(handout)
 admin.site.register(books)
-
+admin.site.register(misc_no)

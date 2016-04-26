@@ -483,25 +483,34 @@ def books(request):
 		return render(request,'connect/index.html')				
 	else:
 		context = {'books':books.objects.all()}
-		return render(request,'connect/books.html',context)			
+		return render(request,'connect/books.html',context)	
 
-class CourseSearchListView(CourseListView):
-    """
-    Display a Course List page filtered by the search query.
-    """
-    paginate_by = 10
+@login_required
+def course(request):
+	if not request.user.is_authenticated():
+		
+		return render(request,'connect/index.html')				
+	else:
+		context = {'course':course.objects.all()}
+		return render(request,'connect/course.html',context)		
 
-    def get_queryset(self):
-        result = super(CourseSearchListView, self).get_queryset()
+#class CourseSearchListView(CourseListView):
+   ## """
+   # Display a Course List page filtered by the search query.
+    #"""
+    #paginate_by = 10
 
-        query = self.request.GET.get('q')
-        if query:
-            query_list = query.split()
-            result = result.filter(
-                reduce(operator.and_,
-                       (Q(name__icontains=q) for q in query_list)) |
-                reduce(operator.and_,
-                       (Q(c_id__icontains=q) for q in query_list))
-            )
+    #def get_queryset(self):
+        #result = super(CourseSearchListView, self).get_queryset()
 
-        return result			
+        #query = self.request.GET.get('q')
+        #if query:
+           #query_list = query.split()
+            #result = result.filter(
+             #   reduce(operator.and_,
+               #        (Q(name__icontains=q) for q in query_list)) |
+                #reduce(operator.and_,
+                #       (Q(c_id__icontains=q) for q in query_list))
+            #)
+
+        #return result			
