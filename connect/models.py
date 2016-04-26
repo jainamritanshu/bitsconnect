@@ -128,6 +128,7 @@ def event_delete(sender, instance, **kwargs):
 
 class course(models.Model):
 	name = models.CharField(max_length=9)
+	c_id = models.CharField(max_length=6)
 
 	def __unicode__(self):
 		return self.name

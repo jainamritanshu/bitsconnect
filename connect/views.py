@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 import re
 import textwrap
 from django.utils import timezone
+import operator
+from django.db.models import Q
 
 
 def auth_logout(request):
@@ -481,4 +483,25 @@ def books(request):
 		return render(request,'connect/index.html')				
 	else:
 		context = {'books':books.objects.all()}
-		return render(request,'connect/books.html',context)				
+		return render(request,'connect/books.html',context)			
+
+class CourseSearchListView(CourseListView):
+    """
+    Display a Course List page filtered by the search query.
+    """
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = super(CourseSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(name__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(c_id__icontains=q) for q in query_list))
+            )
+
+        return result			
