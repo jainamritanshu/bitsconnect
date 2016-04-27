@@ -169,5 +169,14 @@ class misc_no(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class books_s(models.Model):
+	course = models.ForeignKey(course)
+	book = models.ForeignKey(books)
+	is_delivered = models.BooleanField(default='False')
+	is_approved = models.BooleanField(default='True')
+	bhavan = models.ForeignKey(bhavan)
+	room_no = models.IntegerField(default=0)	
+	num_books = models.IntegerField(default=0)	
+	comments = models.CharField(max_length=200, help_text="Guide the delivery boy")
 
 

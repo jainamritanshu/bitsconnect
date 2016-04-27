@@ -514,3 +514,23 @@ def course(request):
             #)
 
         #return result			
+
+@login_required
+def book_s(request):
+	bhavan = get_object_or_404(Bhavan,name=bhavan)
+	course = get_object_or_404(course, name=course)
+	book = get_object_or_404(book, name=book)
+	context={'post':False,'error':False}
+	if request.method == 'POST':
+		context['post'] = True
+		try:
+			comments = request.POST['comments']
+			room_no = request.POST['room_no']
+			if comments.isspace() or room_no.isspace():
+				raise ValueError('Only spaces')
+			if not Problem.objects.filter(books=books, course=course, user=request.user, bhavan=bhavan, room_no=room_no):
+				Problem.objects.create(books=books, course=course, user=request.user, bhavan=bhavan, room_no=room_no)
+		except ValueError as e:
+			context['error'] = True
+	context=({'course': course})
+	return  render(request,'connect/book_s.html',context)
